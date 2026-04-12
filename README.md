@@ -133,4 +133,4 @@ Included in [BAWT 3.2](http://www.bawt.tcl3d.org/).
 
 ## License
 
-BSD-style — same as Tcl/Tk itself.
+BSD 3-Clause — see [LICENSE](LICENSE)
