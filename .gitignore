@@ -1,0 +1,11 @@
+# Build-Ausgaben
+*.bak
+__pycache__/
+*.pyc
+
+# Private Entwicklerdokumentation (nicht fuer GitHub)
+nogit/
+
+# Temporaere Dateien
+*.tmp
+*.log
