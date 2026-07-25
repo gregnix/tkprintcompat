@@ -1,9 +1,9 @@
-# newtcl8790.tcl -- fehlende Tcl 8.7/9.0 Procs fuer Tcl 8.6
-# Stand: 2026-03-26
+# newtcl8790.tcl -- Tcl 8.7/9.0 procs missing in Tcl 8.6
 
-# ::tk::msgcat -- Shim fuer Tcl 8.6
-# print.tcl (Tk 9.0) importiert ::tk::msgcat::* — in Tk 8.6 fehlt dieser Namespace.
-# Einfacher Shim: mc gibt den Formatstring unveraendert zurueck.
+
+# ::tk::msgcat -- shim for Tcl 8.6
+# print.tcl (Tk 9.0) imports ::tk::msgcat::* -- that namespace is missing in Tk 8.6.
+# Simple shim: mc returns the format string unchanged.
 if {![namespace exists ::tk::msgcat]} {
     namespace eval ::tk::msgcat {
         proc mc {src args} {

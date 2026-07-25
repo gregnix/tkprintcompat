@@ -1,7 +1,7 @@
 # Makefile fuer tkprintcompat
 #
 # Aufruf:
-#   make              -> tkprintcompat-0.2.tm bauen
+#   make              -> tkprintcompat-$(VERSION).tm bauen
 #   make install      -> nach ~/lib/tcl8.6/site-tcl/ und ~/lib/tcl9.0/site-tcl/
 #   make test         -> Unit-Tests ausfuehren
 #   make clean        -> .tm loeschen
@@ -10,7 +10,7 @@
 # Beim Einbetten ins .tm wird es entfernt, sonst wuerde print-8.6erw.tcl
 # nie ausgefuehrt. Das build.tcl-Skript erledigt das automatisch.
 
-VERSION = 0.2
+VERSION = 0.3
 TARGET  = tkprintcompat-$(VERSION).tm
 
 SRCFILES = src/newtcl8790.tcl src/print.tcl src/print-8.6erw.tcl

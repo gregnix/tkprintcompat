@@ -4,7 +4,7 @@
 package require Tk
 tcl::tm::add path [file join ../]
 package require tkprintcompat
-set ::filetm [package ifneeded tkprintcompat 0.2]
+set ::filetm [package ifneeded tkprintcompat 0.3]
 wm title . "tkprintcompat Debug"
 wm geometry . "700x500"
 
@@ -26,7 +26,7 @@ proc show_info {} {
     .top.info insert end "windowingsystem:  [tk windowingsystem]\n"
     .top.info insert end "tkprintcompat:    [package require tkprintcompat]\n"
 
-    .top.info insert end "tm-Datei:         [package ifneeded tkprintcompat 0.2]\n"
+    .top.info insert end "tm-Datei:         [package ifneeded tkprintcompat 0.3]\n"
     .top.info insert end "tk scaling:       [tk scaling]\n"
     .top.info insert end "scalingPct:       [::tkprintcompat::_scalingPct]\n"
     .top.info insert end "\n"
@@ -76,7 +76,7 @@ button .bot.reload -text "Reload" -command {
     .log configure -state normal
     .log insert end "\n--- Reload tkprintcompat ---\n"
     package forget tkprintcompat
-    if {[catch {source ../tkprintcompat-0.2.tm} err]} {
+    if {[catch {source ../tkprintcompat-0.3.tm} err]} {
         .log insert end "FEHLER: $err\n"
     } else {
         .log insert end "OK\n"

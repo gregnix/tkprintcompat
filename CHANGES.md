@@ -2,7 +2,23 @@
 
 ---
 
-## 0.2 (2026-03-28)
+## 0.3
+
+Maintenance and cleanup; no functional change to printing.
+
+- Updated `src/print.tcl` to the Tk 9.0.4 core version (verbatim). The change
+  from 9.0.3 is cosmetic only (a copyright line and a comment); `print.tcl` and
+  `tkWinGDI.c` are otherwise unchanged, so all fixes remain necessary and
+  correct.
+- Single build path: removed `build.py`, fixed a whitespace bug in `build.tcl`
+  (leading space on generated comment lines) so it is the one source of truth.
+- Source comments translated to English throughout (except `src/print.tcl`,
+  kept verbatim from the Tk core so version diffs stay meaningful).
+- Documented the platform test skips (`win32` / `tk86`) as expected.
+
+---
+
+## 0.2
 
 Complete rewrite. Renamed to `tkprintcompat` (previously `printtk86`).
 
@@ -26,12 +42,12 @@ Complete rewrite. Renamed to `tkprintcompat` (previously `printtk86`).
 - `_gdi text -width 0` makes text invisible → removed
 
 ### Source Base
-- `src/print.tcl` based on Tk 9.0.3 (BAWT 3.2.0)
+- `src/print.tcl` based on Tk 9.0.4 (verbatim from the Tk core)
 - Minimum version Tk 9.0.3 (Tk 9.0.2 not supported)
 
 ---
 
-## 0.1 / printtk86 (2023-09-13)
+## 0.1 / printtk86
 
 Initial release as Tcl Wiki article "tk print from 8.7 for 8.6".
 Basic wrapper procs for Windows Tcl 8.6:

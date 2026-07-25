@@ -1,4 +1,4 @@
-# tkprintcompat 0.2
+# tkprintcompat 0.3
 
 `tk print` compatibility library for Tcl/Tk 8.6 and Tcl/Tk 9.0.3+.
 
@@ -33,7 +33,7 @@ tk print .mytext     ; # print a Text widget
 
 ---
 
-## What's New in 0.2?
+## What's New
 
 - Bold/Italic in Canvas printing (Windows, tested) ✓
 - Unicode/umlauts/€/© (Windows; X11 limited by PostScript/iso8859-1) ✓
@@ -50,8 +50,8 @@ Details: [CHANGES.md](CHANGES.md)
 
 ```bash
 # Linux:
-cp tkprintcompat-0.2.tm ~/lib/tcl8.6/site-tcl/
-cp tkprintcompat-0.2.tm ~/lib/tcl9.0/site-tcl/
+cp tkprintcompat-0.3.tm ~/lib/tcl8.6/site-tcl/
+cp tkprintcompat-0.3.tm ~/lib/tcl9.0/site-tcl/
 
 # Or:
 make install
@@ -85,18 +85,16 @@ Each test runs only on the platform/version it applies to
 ## Build
 
 ```bash
-make              # build tkprintcompat-0.2.tm (via build.tcl)
+make              # build tkprintcompat-0.3.tm (via build.tcl)
 make install      # install
 make test         # run unit tests
 make clean
 
 # Direct (pure Tcl, no dependencies):
 tclsh build.tcl
-# Fallback:
-python3 build.py
 ```
 
-`src/print.tcl` is based on Tk 9.0.3 (BAWT 3.2.0).
+`src/print.tcl` is based on Tk 9.0.4 (verbatim from the Tk core).
 When updating Tk: replace `src/print.tcl` and run `make`.
 
 ---

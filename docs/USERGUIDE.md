@@ -1,6 +1,6 @@
 # tkprintcompat — User Guide
 
-Version 0.2 | 2026-03-28
+Version 0.3
 
 ---
 
@@ -54,7 +54,7 @@ For full Unicode support on X11, pdf4tcl integration is planned (see todo.md).
 
 ## Installation
 
-Copy `tkprintcompat-0.2.tm` into a directory on your Tcl module path,
+Copy `tkprintcompat-0.3.tm` into a directory on your Tcl module path,
 or use `make`:
 
 ```bash
@@ -187,15 +187,13 @@ tclsh build.tcl
 # Or using make:
 make
 
-# Fallback if tcllib available:
-python3 build.py
 ```
 
 Source files:
 
 | File | Purpose |
 |------|---------|
-| `src/print.tcl` | Tk 9.0.3 library/print.tcl (do not modify) |
+| `src/print.tcl` | Tk 9.0.4 library/print.tcl (do not modify) |
 | `src/newtcl8790.tcl` | Compatibility shims for Tcl 8.6 |
 | `src/print-8.6erw.tcl` | All fixes + `package provide` |
 
