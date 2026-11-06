@@ -3,7 +3,7 @@
 # Pure Tcl, no external packages needed.
 # Usage: tclsh build.tcl
 
-set VERSION "0.3"
+set VERSION "0.3.2"
 set TARGET  "tkprintcompat-${VERSION}.tm"
 set srcdir  [file join [file dirname [info script]] src]
 

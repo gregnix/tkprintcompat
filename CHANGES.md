@@ -2,6 +2,23 @@
 
 ---
 
+## 0.3.2
+
+- Tcl 8.6 on Windows, printing a text widget: line height is the font size
+  plus 20 % leading (it was the font size alone; lines nearly touched).
+
+---
+
+## 0.3.1
+
+- Tcl 8.6 on Windows, printing a text widget (`tk print .text`): the text
+  was drawn without `-font` and without `-unicode`. PDF printers got the
+  device default font (a raster "Courier"), not embedded: blank page or
+  missing letters, umlauts and the euro sign lost. `textplain` now passes
+  the job font (`{Courier New} 11` from `print.tcl`) and `-unicode`.
+
+---
+
 ## 0.3
 
 Maintenance and cleanup; no functional change to printing.

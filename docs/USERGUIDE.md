@@ -1,6 +1,6 @@
 # tkprintcompat — User Guide
 
-Version 0.3
+Version 0.3.2
 
 ---
 
@@ -54,7 +54,7 @@ For full Unicode support on X11, pdf4tcl integration is planned (see todo.md).
 
 ## Installation
 
-Copy `tkprintcompat-0.3.tm` into a directory on your Tcl module path,
+Copy `tkprintcompat-0.3.2.tm` into a directory on your Tcl module path,
 or use `make`:
 
 ```bash

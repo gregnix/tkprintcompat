@@ -1,4 +1,4 @@
-# tkprintcompat 0.3
+# tkprintcompat 0.3.2
 
 `tk print` compatibility library for Tcl/Tk 8.6 and Tcl/Tk 9.0.3+.
 
@@ -50,8 +50,8 @@ Details: [CHANGES.md](CHANGES.md)
 
 ```bash
 # Linux:
-cp tkprintcompat-0.3.tm ~/lib/tcl8.6/site-tcl/
-cp tkprintcompat-0.3.tm ~/lib/tcl9.0/site-tcl/
+cp tkprintcompat-0.3.2.tm ~/lib/tcl8.6/site-tcl/
+cp tkprintcompat-0.3.2.tm ~/lib/tcl9.0/site-tcl/
 
 # Or:
 make install
@@ -85,7 +85,7 @@ Each test runs only on the platform/version it applies to
 ## Build
 
 ```bash
-make              # build tkprintcompat-0.3.tm (via build.tcl)
+make              # build tkprintcompat-0.3.2.tm (via build.tcl)
 make install      # install
 make test         # run unit tests
 make clean

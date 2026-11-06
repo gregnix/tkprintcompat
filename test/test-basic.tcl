@@ -17,7 +17,7 @@ puts "Tcl: [info patchlevel] | Tk: [package require Tk] | [tk windowingsystem]"
 test basic-1.1 {package laden} -body {
     package require tkprintcompat
     package present tkprintcompat
-} -result 0.3
+} -result 0.3.2
 
 test basic-2.1 {dict getdef vorhanden} -body {
     dict getdef {a 1} a "x"

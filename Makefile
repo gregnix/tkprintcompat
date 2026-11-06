@@ -10,7 +10,7 @@
 # Beim Einbetten ins .tm wird es entfernt, sonst wuerde print-8.6erw.tcl
 # nie ausgefuehrt. Das build.tcl-Skript erledigt das automatisch.
 
-VERSION = 0.3
+VERSION = 0.3.2
 TARGET  = tkprintcompat-$(VERSION).tm
 
 SRCFILES = src/newtcl8790.tcl src/print.tcl src/print-8.6erw.tcl

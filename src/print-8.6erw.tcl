@@ -5,7 +5,7 @@
 
 #
 # Dateistruktur:
-#   tkprintcompat-0.3.tm  -- newtcl8790.tcl + print.tcl (8.6-only) + this wrapper
+#   tkprintcompat-0.3.2.tm -- newtcl8790.tcl + print.tcl (8.6-only) + this wrapper
 #   src/print.tcl         -- Tk 9.0.4 library/print.tcl (verbatim)
 #   src/print-8.6erw.tcl  -- diese Datei
 
@@ -143,7 +143,7 @@ if {[package vsatisfies [info tclversion] 9.0-]} {
             }
         }
     }
-    package provide tkprintcompat 0.3
+    package provide tkprintcompat 0.3.2
     return
 }
 
@@ -217,8 +217,12 @@ if {[tk windowingsystem] eq "win32"} {
 
         proc _opendoc {jobname {font {}}} {
             variable printargs
+            variable textfont
             printer job start
             if {$font eq ""} { set font {Arial 12} }
+            # remembered for textplain: the old gdi package does not keep a
+            # font selected in the DC between calls
+            set textfont $font
             # compute charwidth/charheight via gdi characters
             set charwidth  120
             set charheight 200
@@ -235,14 +239,16 @@ if {[tk windowingsystem] eq "win32"} {
                     set charwidth [expr {$total / $count}]
                 }
             }
-            # char height from DPI and font size
+            # line height from DPI and font size, plus 20 % leading: the
+            # font size alone puts the lines of a text widget too close
+            # together (0.3.2)
             catch {
                 set size [lindex $font 1]
                 if {[string match {-*} $size]} {
                     set size [string range $size 1 end]
                 }
                 if {$size > 0} {
-                    set charheight [expr {int($size * $printargs(resy) / 72.0)}]
+                    set charheight [expr {int($size * 1.2 * $printargs(resy) / 72.0)}]
                 }
             }
             if {$charwidth  <= 0} { set charwidth  120 }
@@ -255,14 +261,22 @@ if {[tk windowingsystem] eq "win32"} {
         proc _closepage {} { printer page end }
 
         proc _gdi {args} {
+            variable textfont
             # textplain does not exist in the old gdi package:
-            # textplain hdc x y string -> gdi text hdc x y -anchor nw -text string
+            # textplain hdc x y string ->
+            #   gdi text hdc x y -anchor nw -text string -font F -unicode
+            # Without -font, gdi text draws with the device default font
+            # (a raster "Courier" on PDF printers: not embeddable, the page
+            # comes out blank or with missing letters). Without -unicode it
+            # uses DrawTextA, and umlauts and the euro sign are lost.
             if {[lindex $args 0] eq "textplain"} {
                 set hdc    [lindex $args 1]
                 set x      [lindex $args 2]
                 set y      [lindex $args 3]
                 set string [lindex $args 4]
-                gdi text $hdc $x $y -anchor nw -text $string
+                set font {{Courier New} 11}
+                if {[info exists textfont] && $textfont ne ""} { set font $textfont }
+                gdi text $hdc $x $y -anchor nw -text $string -font $font -unicode
                 return
             }
             gdi {*}$args
@@ -270,7 +284,7 @@ if {[tk windowingsystem] eq "win32"} {
     }
 }
 
-package provide tkprintcompat 0.3
+package provide tkprintcompat 0.3.2
 
 # Fix: _print_canvas -- namespace-qualified check + scaling correction.
 # Tcl 8.6 Windows.
